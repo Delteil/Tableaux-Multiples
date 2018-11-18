@@ -57,10 +57,10 @@ public class TableauxMulti6 {
 		boolean mouvOk = true;
 		while (mouvement != 4) {
 			System.out.println(
-					"entrez le mouvement du pion : 0 (en haut à gauche), 1 (en haut à droite), 2 (en bas à gauche), 3 (en bas à droite), 4 (arràt du jeu)");
+					"entrez le mouvement du pion : 0 (en haut à gauche), 1 (en haut à droite), 2 (en bas à gauche), 3 (en bas à droite), 4 (arrêt du jeu)");
 			mouvement = sc.nextInt();
-			
-			mouvOk = (ligne-1 >= 0 && ligne+1 <= 9) && (colonne-1 >= 0 && colonne+1 <= 9);
+
+			mouvOk = (ligne - 1 >= 0 && ligne + 1 <= 9) && (colonne - 1 >= 0 && colonne + 1 <= 9);
 
 			if (mouvement == 0) {
 				if (mouvOk) {
@@ -70,9 +70,9 @@ public class TableauxMulti6 {
 					System.out.println("mouvement impossible");
 				}
 				tab[ligne][colonne] = pion;
-				tab[ligne+1][colonne+1] = 0;		
+				tab[ligne + 1][colonne + 1] = 0;
 			}
-			
+
 			if (mouvement == 1) {
 				if (mouvOk) {
 					ligne = ligne - 1;
@@ -81,15 +81,45 @@ public class TableauxMulti6 {
 					System.out.println("mouvement impossible");
 				}
 				tab[ligne][colonne] = pion;
-				tab[ligne+1][colonne-1] = 0;
-			
-				}
-			afficheTab(tab);
+				tab[ligne + 1][colonne - 1] = 0;
+
 			}
-			
+
+			if (mouvement == 2) {
+				if (mouvOk) {
+					ligne = ligne + 1;
+					colonne = colonne - 1;
+				} else {
+					System.out.println("mouvement impossible");
+				}
+				tab[ligne][colonne] = pion;
+				tab[ligne - 1][colonne + 1] = 0;
+
+			}
+
+			if (mouvement == 3) {
+				if (mouvOk) {
+					ligne = ligne + 1;
+					colonne = colonne + 1;
+				} else {
+					System.out.println("mouvement impossible");
+				}
+				tab[ligne][colonne] = pion;
+				tab[ligne - 1][colonne - 1] = 0;
+
+			}
+			if (mouvement == 4) {
+				if (mouvOk) {
+
+					afficheTab(tab);
+				}
+			}
+
+			afficheTab(tab);
 		}
 
-	
+		sc.close();
+	}
 
 	public static void afficheTab(int[][] tab) {
 		for (int i = 0; i < tab.length; i++) {
